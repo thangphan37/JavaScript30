@@ -1,46 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+    <script>
+      const dogs = [
+        {name: 'Snickers', age: 2},
+        {name: 'hugo', age: 8},
+      ]
+      const p = document.querySelector('p')
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+      function makeGreen() {
+        const p = document.querySelector('p')
+        p.style.color = '#BADA55'
+        p.style.fontSize = '50px'
+      }
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+      // Regular
+      console.log('Hello')
+      // Interpolated
+      console.log('Hello I am %s from VN', 'Thang')
+      // Styled
+      console.log(
+        '%c I am some great style',
+        'font-size: 30px; color: yellow; background: black;',
+      )
+      // warning!
+      console.warn('Warning!')
+      // Error :|
+      console.error('Error!')
 
-    // Regular
+      // Info
+      console.info('Corona virus is very dangerous!')
 
-    // Interpolated
+      // Testing
+      console.assert(1 === 2, 'Noooooooooo!')
 
-    // Styled
+      // clearing
+      console.clear()
 
-    // warning!
-
-    // Error :|
-
-    // Info
-
-    // Testing
-
-    // clearing
-
-    // Viewing DOM Elements
-
-    // Grouping together
-
-    // counting
-
-    // timing
-
-  </script>
-</body>
+      // Viewing DOM Elements
+      console.log(p)
+      console.dir(p)
+      // Grouping together
+      dogs.forEach((dog) => {
+        console.groupCollapsed(`${dog.name}`)
+        console.log(`Name: ${dog.name}`)
+        console.log(`Age: ${dog.age}`)
+        console.groupEnd(`${dog.name}`)
+      })
+      // counting
+      console.count('Thang')
+      console.count('Thang')
+      console.count('Thang')
+      console.count('Thang')
+      console.count('Phan')
+      console.count('Phan')
+      console.count('Phan')
+      console.count('Phan')
+      console.count('Phan')
+      // timing
+      console.time('fetchTime:')
+      fetch('https://api.github.com/users/thangphan37')
+        .then((r) => r.json())
+        .then((data) => {
+          console.log(data)
+          console.timeEnd('fetchTime:')
+        })
+    </script>
+  </body>
 </html>
